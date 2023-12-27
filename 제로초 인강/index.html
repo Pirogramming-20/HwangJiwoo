@@ -9,12 +9,25 @@
     <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
     <title>NAVER</title>
     <style>
+        /* 브라우저의 기본 css 설정 초기화 */
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
         #wrap {
             text-align: center;
         }
         #wrap-center {
             width: 1200px;
+            /* 그냥 inline은 높이와 넓이를 무시 */
+            display: inline-block;
             background-color: yellow;
+        }
+        #header-hamburger {
+            margin-top: 18px;
+            background-color: blue;
+            width: 46px;
+            height: 46px;
         }
         /* 부모는 보통 자식의 높이를 그대로 차지 */
         #main {
@@ -26,7 +39,12 @@
     <!-- cmd + shift + i로 웹페이지 확인 -->
     <div id="wrap">
         <div id="wrap-center">
-            <div id="header"></div>
+            <div id="header">
+                <!-- id가 겹치는 것을 방지하기 위한 네이밍 -->
+                <div id="header-hamburger">
+
+                </div>
+            </div>
             <div id="search"></div>
             <div id="nav"></div>
             <div id="main"></div>
