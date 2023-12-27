@@ -210,11 +210,14 @@
             <style>
                 #search > form {
                     display: inline-flex;
-                    width: 708.13px;
-                    height: 60.13px;
+                    width: 708px;
+                    height: 60px;
                     border: 1px solid #03c75a;
                     border-radius: 33px;
                     text-align: left;
+                }
+                #search > form:hover{
+                    box-shadow: 2px 2px 5px #e4e4e4;
                 }
                 #search-svg {
                     display: inline-flex;
@@ -240,6 +243,12 @@
                     border: none;
                     outline: none;
                 }
+                #search-input::placeholder{
+                    color: white;
+                }
+                #search-input:focus::placeholder{
+                    color: #e4e4e4;
+                }
                 #search-right {
                     flex: 1;
                     display: flex;
@@ -261,6 +270,10 @@
                     width: 24px;
                     height: 14px;
                 }
+                /* 기존 이미지를 변경하는 것은 더 아래에 작성 */
+                #search-keyboard:hover::before {
+                    filter: brightness(0.7);
+                }
                 #search-recent::before {
                     content: "";
                     display: block;
@@ -271,7 +284,14 @@
                     width: 10px;
                     height: 6px;
                 }
-                #search-button::before {
+                #search-button {
+                    padding: 17px 27px 16px 10px;
+                }
+                #search-button > div {
+                    width: 25px;
+                    height: 25px;
+                }
+                #search-button > div::before {
                     content: "";
                     display: inline-block;
                     background-image: url(https://pm.pstatic.net/resources/asset/sp_main.d5b6c236.png);
@@ -288,7 +308,7 @@
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.273 12.845 7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z"></path></svg>
                     </a>
                     <label for="search-input" class="blind">검색어 입력</label>
-                    <input id="search-input" type="text" placeholder="검색어를 입력하세요."/>
+                    <input id="search-input" type="text" placeholder="검색어를 입력해 주세요."/>
                     <div id="search-right">
                         <button href="#" id="search-keyboard">
                             <span class="blind">입력도구</span>
