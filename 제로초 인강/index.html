@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="ko">
 <!-- 일반적으로 html에 대한 설명, meta data -->
 <head>
@@ -79,6 +80,8 @@
         }
         /* 브라우저의 기본 css 설정 초기화 */
         html, body, form {
+            font-size: 10.5px;
+            line-height: 10.5px;
             margin: 0;
             padding: 0;
         }
@@ -248,8 +251,8 @@
                 }
                 #search-input {
                     width: 480px;
-                    height: 54px;
                     padding: 17px 0px;
+                    /* font size를 바꿀 때 더 용이한 단위 */
                     font-size: 2rem;
                     line-height: 24px;
                     font-weight: bold;
@@ -336,7 +339,99 @@
                     <button class="blind">검색</button>
                 </form>
             </div>
-            <div id="nav"></div>
+            <style>
+                #nav > ul {
+                    display: flex;
+                    list-style-type: none;
+                    justify-content: center;
+                    font-size: 1.4rem;
+                    line-height: 20px;
+                }
+
+                #nav a {
+                    text-decoration: none;
+                }
+
+                #nav a:visited {
+                    color: black;
+                }
+
+                #nav li {
+                    width: 64px;
+                    margin-left: 4px;
+                }
+
+                #nav li :nth-of-type(1) {
+                    margin-left: 0;
+                }
+                #nav li :nth-of-type(1) {
+
+                }
+            </style>
+            <div id="nav">
+                <ul>
+                    <li>
+                        <a href="">
+                            <div></div>
+                            <span>메일</span>                            
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <div></div>
+                            <span>카페</span>                            
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <div></div>
+                            <span>블로그</span>                            
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <div></div>
+                            <span>쇼핑</span>                            
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <div></div>
+                            <span>뉴스</span>                            
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <div></div>
+                            <span>증권</span>                            
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <div></div>
+                            <span>부동산</span>                            
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <div></div>
+                            <span>지도</span>                            
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <div></div>
+                            <span>웹툰</span>                            
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <div></div>
+                            <span class="blind">더보기</span>                            
+                        </a>
+                    </li>
+                </ul>
+            </div>
             <div id="main"></div>
         </div>
     </div>
