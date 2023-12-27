@@ -9,6 +9,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
     <title>NAVER</title>
     <style>
+        /* CSS도 변수 사용할 수 있음 */
         :root {
             --color_title: #080808;
             --color_title_rgb: 8,8,8;
@@ -89,8 +90,14 @@
         }
         #header {
             text-align: left;
+            /* 자식 요소의 absolute의 기준점을 바꿔줄 수 있음 */
+            position: relative;
         }
         #header-hamburger {
+            /* 절대적 위치 (부모 중에서 static이 아닌 요소가 기준) */
+            position: absolute;
+            top:18px;
+            left: -10px;
             margin-top: 18px;
             /* margin은 클릭안됨. padding은 button에 포함되어 클릭할 수 있음 */
             padding: 10px;
@@ -99,9 +106,21 @@
             border: none;
             cursor: pointer;
         }
-        #header-hamburger:hover {
+        /* content가 반드시 필요 */
+        #header-hamburger:hover::before {
+            position: absolute;
+            content: '';
+            left: 1px;
+            top: 1px;
+            width: 44px;
+            height: 44px;
             background-color: var(--color_option_bg);
             border-radius: 50%;
+        }
+        #header-hamburger:hover > div {
+            position: relative;
+            left: 1px;
+            top: 1px;
         }
         #header-hamburger > div {
             /* 많은 수의 이미지를 한 번에 불러오기 편하게 이미지 스프라이트 형태로 전달 */
