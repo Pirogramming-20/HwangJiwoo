@@ -110,17 +110,14 @@
         #header-hamburger:hover::before {
             position: absolute;
             content: '';
+            /* 서로 형제일 때만 적용 */
+            z-index: 0;
             left: 1px;
             top: 1px;
             width: 44px;
             height: 44px;
             background-color: var(--color_option_bg);
             border-radius: 50%;
-        }
-        #header-hamburger:hover > div {
-            position: relative;
-            left: 1px;
-            top: 1px;
         }
         #header-hamburger > div {
             /* 많은 수의 이미지를 한 번에 불러오기 편하게 이미지 스프라이트 형태로 전달 */
@@ -130,11 +127,22 @@
             background-repeat: no-repeat;
             width: 26px;
             height: 26px;
+            z-index: 1;
+            position: relative;
         }
         /* 부모는 보통 자식의 높이를 그대로 차지 */
         #main {
             height: 2000px;
-        } 
+        }
+        /* 시각 장애인을 위하여 작성 */
+        .blind {
+            position: absolute;
+            clip: rect(0 0 0 0);
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+        }
     </style>
 </head>
 <body>
@@ -144,7 +152,10 @@
             <div id="header">
                 <!-- id가 겹치는 것을 방지하기 위한 네이밍 -->
                 <button id="header-hamburger">
+                    <!-- ::before -->
                     <div></div>
+                    <span class="blind">확장 영역</span>
+                    <!-- ::after -->
                 </button>
             </div>
             <div id="search"></div>
