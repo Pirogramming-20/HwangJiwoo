@@ -74,6 +74,9 @@
             --color_dic: #031f5f;
             --color_dic_rgb: 3,31,95;
         }
+        * {
+            box-sizing: border-box;
+        }
         /* 브라우저의 기본 css 설정 초기화 */
         html, body {
             margin: 0;
@@ -93,11 +96,10 @@
             /* 자식 요소의 absolute의 기준점을 바꿔줄 수 있음 */
             position: relative;
         }
-        #header-hamburger {
+        #header-hamburger, #header-notice, #header-talk {
             /* 절대적 위치 (부모 중에서 static이 아닌 요소가 기준) */
             position: absolute;
             top:18px;
-            left: -10px;
             margin-top: 18px;
             /* margin은 클릭안됨. padding은 button에 포함되어 클릭할 수 있음 */
             padding: 10px;
@@ -107,7 +109,7 @@
             cursor: pointer;
         }
         /* content가 반드시 필요 */
-        #header-hamburger:hover::before {
+        #header-hamburger:hover::before, #header-talk:hover::before, #header-notice:hover::before {
             position: absolute;
             content: '';
             /* 서로 형제일 때만 적용 */
@@ -119,16 +121,33 @@
             background-color: var(--color_option_bg);
             border-radius: 50%;
         }
-        #header-hamburger > div {
+        #header-hamburger > div, #header-talk > div, #header-notice > div {
             /* 많은 수의 이미지를 한 번에 불러오기 편하게 이미지 스프라이트 형태로 전달 */
             background-image: url(./sp_main.png);
             background-size: 433px 412px;
-            background-position: -335px -81px;
             background-repeat: no-repeat;
             width: 26px;
             height: 26px;
             z-index: 1;
             position: relative;
+        }
+        #header-hamburger {
+            left: -10px;
+        }
+        #header-hamburger > div {
+            background-position: -335px -81px;
+        }
+        #header-talk {
+            right: 42px;
+        }
+        #header-talk > div {
+            background-position: -335px -189px;
+        }
+        #header-notice {
+            right: -10px;
+        }
+        #header-notice > div {
+            background-position: -335px -135px;
         }
         /* 부모는 보통 자식의 높이를 그대로 차지 */
         #main {
@@ -155,6 +174,18 @@
                     <!-- ::before -->
                     <div></div>
                     <span class="blind">확장 영역</span>
+                    <!-- ::after -->
+                </button>
+                <button id="header-talk">
+                    <!-- ::before -->
+                    <div></div>
+                    <span class="blind">네이버톡</span>
+                    <!-- ::after -->
+                </button>
+                <button id="header-notice">
+                    <!-- ::before -->
+                    <div></div>
+                    <span class="blind">알림</span>
                     <!-- ::after -->
                 </button>
             </div>
