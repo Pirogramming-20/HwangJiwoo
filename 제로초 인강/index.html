@@ -78,7 +78,7 @@
             box-sizing: border-box;
         }
         /* 브라우저의 기본 css 설정 초기화 */
-        html, body {
+        html, body, form {
             margin: 0;
             padding: 0;
         }
@@ -95,6 +95,7 @@
             text-align: left;
             /* 자식 요소의 absolute의 기준점을 바꿔줄 수 있음 */
             position: relative;
+            height: 64px;
         }
         #header-hamburger, #header-notice, #header-talk {
             /* 절대적 위치 (부모 중에서 static이 아닌 요소가 기준) */
@@ -189,7 +190,30 @@
                     <!-- ::after -->
                 </button>
             </div>
-            <div id="search"></div>
+            <style>
+                #search > form {
+                    display: inline-block;
+                    width: 700px;
+                    height: 60px;
+                    border: 1px solid #03c75a;
+                    border-radius: 33px;
+                    text-align: left;
+                }
+                #search > form > input {
+                    width: 480px;
+                    height: 100%;
+                    padding: 17px 0;
+                    border: none;
+                    outline: none;
+                }
+            </style>
+            <div id="search">
+                <form action="">
+                    <label for="search-input" class="blind">검색어 입력</label>
+                    <input id="search-input" type="text" />
+                    <button class="blind">검색</button>
+                </form>
+            </div>
             <div id="nav"></div>
             <div id="main"></div>
         </div>
