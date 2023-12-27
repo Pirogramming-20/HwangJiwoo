@@ -8,8 +8,29 @@
     <!-- 현재 폴더를 바라보게 하기 위해서 앞에 .(현재 폴더)을 붙여 수정 -->
     <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
     <title>NAVER</title>
+    <style>
+        #wrap {
+            text-align: center;
+        }
+        #wrap-center {
+            width: 1200px;
+            background-color: yellow;
+        }
+        /* 부모는 보통 자식의 높이를 그대로 차지 */
+        #main {
+            height: 2000px;
+        } 
+    </style>
 </head>
 <body>
-    <div>안녕하세요</div>
+    <!-- cmd + shift + i로 웹페이지 확인 -->
+    <div id="wrap">
+        <div id="wrap-center">
+            <div id="header"></div>
+            <div id="search"></div>
+            <div id="nav"></div>
+            <div id="main"></div>
+        </div>
+    </div>
 </body>
 </html>
