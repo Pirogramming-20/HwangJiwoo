@@ -23,11 +23,22 @@
             display: inline-block;
             background-color: yellow;
         }
+        #header {
+            text-align: left;
+        }
         #header-hamburger {
             margin-top: 18px;
-            background-color: blue;
-            width: 46px;
-            height: 46px;
+            padding: 10px;
+            display: inline-block;
+        }
+        #header-hamburger > div {
+            /* 많은 수의 이미지를 한 번에 불러오기 편하게 이미지 스프라이트 형태로 전달 */
+            background-image: url(./sp_main.png);
+            background-size: 433px 412px;
+            background-position: -335px -81px;
+            background-repeat: no-repeat;
+            width: 26px;
+            height: 26px;
         }
         /* 부모는 보통 자식의 높이를 그대로 차지 */
         #main {
@@ -42,7 +53,7 @@
             <div id="header">
                 <!-- id가 겹치는 것을 방지하기 위한 네이밍 -->
                 <div id="header-hamburger">
-
+                    <div></div>
                 </div>
             </div>
             <div id="search"></div>
