@@ -202,16 +202,9 @@
             .section-th--curr {
                 font-size: 2.2rem;
             }
-
-            [class^="ri-"], [class*=" ri-"] {
-                font-family: 'remixicon' !important;
-                font-style: normal;
-                -webkit-font-smoothing: antialiased;
-            }
             .ri-arrow-right-s-line:before {
-                content: "\ea6e";
+                content: ">";
             }
-
             footer {
                 background-color: #333333;
                 width: 100%;
@@ -287,6 +280,11 @@
             #footer-top .footer--nav li:hover, #footer-top .footer--contact li:hover {
                 top: -2px;
             }
+            @media screen and (max-width: 760px) {
+                footer {
+                  display: none;
+                }
+            }
         </style>
     </head>
     <body style="position: relative">
@@ -331,24 +329,17 @@
             <div class="overlay" id="hamburgerOverlay" style="visibility: hidden; opacity: 0;"></div>
             <section id="portfolio" class="max-width-1200 avoid-nav">
                 <div class="section-th portfolio-th flex_between">
-                  
                   <div class="section-th--next"></div>
-                  
                   <div class="section-th--curr">19기</div>
-                  
                   <a href="/portfolio/?level=18">
                     <div class="section-th--prev">
                       <span>18기</span>
                       <i class="ri-arrow-right-s-line"></i>
                     </div>
                   </a>
-                  
                 </div>
-              
-                
-                
-                <!-- 모두 비어 있지 않은 경우 -->
-                <div class="project-container" pfid="1">
+
+                <div class="project-container">
                   <div class="project-more">
                     <div></div>
                     <div></div>
@@ -363,39 +354,16 @@
                       <p>매일 매일 투표와 통계로 느끼는 즐거움</p>
                     </div>
                     <ul class="project-content--team">
-                      <!-- 팀장 -->
-                       
-                        
-                      
                       <li class="leader">김정곤</li>
-                        
-                        
-                        
-                       
-              
-                      <!-- 팀원 -->
-                       
-                      
                       <li>곽민경</li>
-                        
-                        
-                      
                       <li>송우진</li>
-                        
-                      
                       <li>왕한솔</li>
-                        
-                      
                       <li>조성민</li>
-                       
                     </ul>
                   </div>
                 </div>
                 
-                
-                
-                <!-- 모두 비어 있지 않은 경우 -->
-                <div class="project-container" pfid="2">
+                <div class="project-container">
                   <div class="project-more">
                     <div></div>
                     <div></div>
@@ -410,39 +378,16 @@
                       <p>나만의 경험공유 플랫폼. 마이패스입니다.</p>
                     </div>
                     <ul class="project-content--team">
-                      <!-- 팀장 -->
-                       
-                        
-                        
-                        
-                      
                       <li class="leader">장준석</li>
-                        
-                       
-              
-                      <!-- 팀원 -->
-                       
-                      
                       <li>김도은</li>
-                        
-                      
                       <li>백서경</li>
-                        
-                      
                       <li>이정한</li>
-                        
-                        
-                      
-                      <li>채리원</li>
-                       
+                      <li>채리원</li> 
                     </ul>
                   </div>
                 </div>
                 
-                
-                
-                <!-- 모두 비어 있지 않은 경우 -->
-                <div class="project-container" pfid="3">
+                <div class="project-container">
                   <div class="project-more">
                     <div></div>
                     <div></div>
@@ -457,38 +402,15 @@
                       <p>군인들을 위한 택시 동승 인원 매칭서비스</p>
                     </div>
                     <ul class="project-content--team">
-                      <!-- 팀장 -->
-                       
-                        
-                      
                       <li class="leader">노영진</li>
-                        
-                        
-                        
-                       
-              
-                      <!-- 팀원 -->
-                       
-                      
                       <li>김현수</li>
-                        
-                        
-                      
                       <li>백승민</li>
-                        
-                      
                       <li>오경린</li>
-                        
-                      
                       <li>이현지</li>
-                       
                     </ul>
                   </div>
                 </div>
                 
-                
-                
-                <!-- 모두 비어 있지 않은 경우 -->
                 <div class="project-container" pfid="4">
                   <div class="project-more">
                     <div></div>
@@ -504,38 +426,15 @@
                       <p>주식과 Todo 서비스를 결합한 웹 플랫폼</p>
                     </div>
                     <ul class="project-content--team">
-                      <!-- 팀장 -->
-                       
-                        
-                      
                       <li class="leader">민세원</li>
-                        
-                        
-                        
-                       
-              
-                      <!-- 팀원 -->
-                       
-                      
                       <li>김선우</li>
-                        
-                        
-                      
                       <li>안정근</li>
-                        
-                      
                       <li>오지수</li>
-                        
-                      
                       <li>정환희</li>
-                       
                     </ul>
                   </div>
                 </div>
                 
-                
-                
-                <!-- 모두 비어 있지 않은 경우 -->
                 <div class="project-container" pfid="5">
                   <div class="project-more">
                     <div></div>
@@ -551,37 +450,17 @@
                       <p>깔 - 끔한 업무용 채팅 웹 서비스, 피롯입니다.</p>
                     </div>
                     <ul class="project-content--team">
-                      <!-- 팀장 -->
-                       
-                        
-                        
-                      
                       <li class="leader">양원채</li>
-                        
-                        
-                       
-              
-                      <!-- 팀원 -->
-                       
-                      
                       <li>김선우</li>
-                        
-                      
                       <li>박석류</li>
-                        
-                        
-                      
                       <li>장민서</li>
-                        
-                      
                       <li>정혜인</li>
-                       
                     </ul>
                   </div>
                 </div>
                 
-                
             </section>
+            
             <div class="overlay portfolioOverlay" style="z-index: -1;"></div>
             <footer id="footer-top">
                 <div class="footer-container max-width-1200">
