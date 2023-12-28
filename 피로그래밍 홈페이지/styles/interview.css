@@ -1,0 +1,88 @@
+#iv-section {
+    min-height: 90vh;
+}
+.interview-contents {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: var(--gutter);
+    margin-bottom: var(--offset);
+}
+@media screen and (max-width: 850px) {
+    .interview-contents {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media screen and (max-width: 600px) {
+    .interview-contents {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+.interview-card {
+    background-color: #333333;
+    border-radius: 10px;
+    padding: var(--gutter);
+    cursor: pointer;
+    position: relative;
+}
+.interview-card:hover {
+    top: -2px;
+}
+.interview-card--header {
+    display: flex;
+    gap: var(--gutter);
+}
+.interview-profile--pic {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.interview-profile--pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.3s;
+}
+.interview-header--right {
+    font-size: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+}
+.interview-header--right > div:last-child {
+    padding: 6px 8px;
+    font-size: 1.4rem;
+    border-radius: 5px;
+    color: var(--white);
+}
+.interview-card--intro {
+    font-size: 1.6rem;
+    padding-top: var(--gutter);
+    line-height: 2rem;
+}
+.non-major-badge {
+    background: #c54422;
+}
+.double-major-badge {
+    background: #35a67b;
+}
+.major-badge {
+    background: #2188b6;
+}
+.interview-card:hover .project-more > div:nth-child(1), .interview-card:hover .project-more > div:nth-child(3) {
+    width: 50%;
+}
+.interview-card:hover .interview-profile--pic img {
+    transform: scale(1.1);
+}
+.interview-overlay {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    z-index: -2;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+}
