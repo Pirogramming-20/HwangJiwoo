@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>
+    Idea Detail
+    <span>아이디어 세부내용 페이지입니다. 당신이 구현해야 할 아이디어들을 자세히 살펴보세요.</span>
+</h2>
+<div>
+    <div>
+        {% if idea.image.url != null and idea.image.url != '' %}
+        <img src="{{ idea.image.url }}" alt="대체텍스트">
+        {% else %}
+        <img src="" alt="대체텍스트">
+        {% endif %}
+    </div>
+    <div>
+        <h1>{{ idea.title }}</h1>
+        <span>아이디어 관심도</span>
+        <br>
+        <span>{{ idea.interest }}</span>
+        <br>
+        <br>
+        <span>예상 개발 툴</span>
+        <br>
+        <span>{{ idea.devtool }}</span>
+        <br>
+        <br>
+        <span>아이디어 설명</span>
+        <br>
+        <span>{{ idea.content }}</span>
+        <br>
+        <br>
+    </div>
+    <form action="{% url 'ideas:delete' idea.pk %}" method="post" >
+        {% csrf_token %}
+        <button type="submit">삭제</button>
+        <a href="/">목록</a>
+        <a href="{% url 'ideas:update' idea.pk %}">수정</a>
+    </form>
+</div>
+{% endblock %}

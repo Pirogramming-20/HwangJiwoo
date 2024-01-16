@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>
+    Idea Register
+    <span>아이디어 등록 페이지입니다. 당신의 아이디어를 잊지말고 기록하세요</span>
+</h2>
+<form action="{% url 'ideas:create' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>SUBMIT</button>
+</form>
+{% endblock %}

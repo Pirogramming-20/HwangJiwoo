@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<body>
+    <h2>
+        Idea List
+        <span>나의 아이디어를 잊지 말고 기억해보세요</span>
+    </h2>
+    {% for idea in ideas %}
+    <div>
+        {% if idea.image.url != null and idea.image.url != '' %}
+        <img src="{{ idea.image.url }}" alt="대체텍스트">
+        {% else %}
+        <img src="" alt="대체텍스트">
+        {% endif %}
+        <a href="{% url 'ideas:detail' idea.pk %}">
+            <p>{{ idea.title }}</p>
+        </a>
+        <p>예상 개발 툴: {{ idea.devtool }}</p>
+        <p>아이디어 관심도: <span>-</span> {{ idea.interest }} <span>+</span></p>
+    </div>
+    {% endfor %}
+</body>
+{% endblock %}

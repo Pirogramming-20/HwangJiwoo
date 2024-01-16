@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>
+    Idea Detail Update
+    <span>아이디의 세부내용 수정페이지입니다. 아이디어를 구체화하거나 내용을 변경해보세요.</span>
+</h2>
+<form action="{% url 'ideas:update' pk %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>SUBMIT</button>
+</form>
+{% endblock %}

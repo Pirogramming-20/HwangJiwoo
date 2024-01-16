@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <header>
+            <h4>My SW Idea Manage</h4>
+            <a href="{% url 'ideas:create' %}">
+                <h4>아이디어 등록</h4>
+            </a>
+            <a href="/">
+                <h4>아이디어 관리</h4>
+            </a>
+            <a href="{% url 'devtools:create' %}">
+                <h4>개발툴 등록</h4>
+            </a>
+            <a href="{% url 'devtools:list' %}">
+                <h4>개발툴 관리</h4>
+            </a>
+        </header>
+        <main>
+            <div>
+                {% block content %}
+                {% endblock %}
+            </div>
+        </main>
+    </body>
+</html>

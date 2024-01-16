@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>
+    DevTool Detail Update
+    <span>개발툴 수정 페이지입니다. 개발툴에 대해 수정사항이 있으면 고쳐보세요.</span>
+ </h2>
+ <form action="{% url 'devtools:update' pk %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>SUBMIT</button>
+ </form>
+{% endblock %}
