@@ -1,0 +1,46 @@
+#header {
+    display: flex;
+    justify-content: space-around;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#idea_list {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.idea_list_content {
+    margin-right: 30px;
+}
+
+#idea_detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#idea_detail_content {
+    display: flex;
+    align-items: center;
+}
+
+#idea_detail_content_image {
+    margin-right: 30px;
+}
+
+#idea_list_content_image {
+    width: 60px;
+    height: 80px;
+}

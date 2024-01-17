@@ -1,12 +1,16 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <script defer src="https://kit.fontawesome.com/6a125f09de.js" crossorigin="anonymous"></script>
         <title>Document</title>
     </head>
     <body>
-        <header>
+        <header id="header">
             <h4>My SW Idea Manage</h4>
             <a href="{% url 'ideas:create' %}">
                 <h4>아이디어 등록</h4>
@@ -22,7 +26,7 @@
             </a>
         </header>
         <main>
-            <div>
+            <div id="container">
                 {% block content %}
                 {% endblock %}
             </div>

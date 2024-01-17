@@ -10,7 +10,7 @@
         <span>{{ devtool.kind }}</span>
         <span>{{ devtool.content }}</span>
     </div>
-    <div>
+    <div style="display: flex; flex-direction: column;">
         <p>>만들 수 있는 SW 목록</p>
         {% for idea in all_idea %}
         <a href="{% url 'ideas:detail' idea.pk %}">{{ idea.title }}</a>

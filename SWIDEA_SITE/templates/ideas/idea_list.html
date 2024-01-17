@@ -1,23 +1,78 @@
 {% extends 'base.html' %}
 {% block content %}
-<body>
-    <h2>
-        Idea List
-        <span>나의 아이디어를 잊지 말고 기억해보세요</span>
-    </h2>
+
+<h2 class="title">
+    Idea List
+    <span>나의 아이디어를 잊지 말고 기억해보세요</span>
+</h2>
+
+<select id="orderDropdown">
+    <option value="">-----</option>
+    <option value="likes">Likes순</option>
+    <option value="title">이름순</option>
+    <option value="created_at">등록순</option>
+    <option value="updated_at">최신순</option>
+</select>
+
+<div id="idea_list">
     {% for idea in ideas %}
-    <div>
-        {% if idea.image.url != null and idea.image.url != '' %}
-        <img src="{{ idea.image.url }}" alt="대체텍스트">
-        {% else %}
-        <img src="" alt="대체텍스트">
-        {% endif %}
+    <div class="idea_list_content">
+        <div style="display: flex; justify-content: center; align-items: center; position: relative;">
+            <div style="position: absolute; width: 10px; height: 10px; top: 3px; right: 30%;" class="star">
+                    {% for idea_star in idea_stars %}
+                        {% if idea_star.idea_id == idea.pk %}
+                        <a href="{% url 'ideas:update_star' idea_star.pk %}">
+                            {% if idea_star.star == True %}
+                            <i class="fa-solid fa-star"></i>
+                            {% else %}
+                            <i class="fa-regular fa-star"></i>
+                            {% endif %}
+                        </a>
+                        {% endif %}
+                    {% endfor %}
+            </div>
+            {% if idea.image.url != null and idea.image.url != '' %}
+            <img src="{{ idea.image.url }}" alt="대체텍스트" id="idea_list_content_image">
+            {% else %}
+            <img src="" alt="대체텍스트" id="idea_list_content_image">
+            {% endif %}
+        </div>
         <a href="{% url 'ideas:detail' idea.pk %}">
             <p>{{ idea.title }}</p>
         </a>
         <p>예상 개발 툴: {{ idea.devtool }}</p>
-        <p>아이디어 관심도: <span>-</span> {{ idea.interest }} <span>+</span></p>
+        <p>아이디어 관심도: <span class="minus" data-idea-id="{{ idea.id }}">-</span><span id="interest-value-{{ idea.id }}">{{ idea.interest }}</span><span class="plus" data-idea-id="{{ idea.id }}">+</span></p>
     </div>
     {% endfor %}
-</body>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".minus, .plus").click(function() {
+            let ideaId = $(this).data("idea-id");
+            let action = $(this).hasClass("minus") ? "minus" : "plus";
+
+            $.ajax({
+                url: "{% url 'ideas:update_interest' %}",
+                type: 'POST',
+                data: {
+                    'idea_id': ideaId,
+                    'action': action,
+                    'csrfmiddlewaretoken': '{{ csrf_token }}'
+                },
+                success: function(response) {
+                    if (response.success) {
+                        $("#interest-value-" + ideaId).text(response.new_interest);
+                    } else {
+                        console.error("서버에서 처리 중 오류 발생");
+                    }
+                },
+                error: function() {
+                    console.error("AJAX 요청 실패")
+                }
+            })
+        })
+    })
+</script>
+
 {% endblock %}
