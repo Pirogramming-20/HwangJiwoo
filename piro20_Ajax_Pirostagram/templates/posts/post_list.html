@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for post in posts %}
+<div class="post-id-{{ post.id }}" style="display: flex; flex-direction: column; align-items: center; border: solid 1px gray; margin-bottom: 20px; position: relative;">
+    <span style="position: absolute; right: 5px; border: solid 0.5px black;" onclick="deletePost({{ post.id }})">X</span>
+    <span>{{ post.title }}</span>
+    <span>{{ post.content }}</span>
+    <span class="post_like">LIKE: {{ post.like }}</span>
+    <button onclick="onClickLike({{post.id}})">LIKE</button>
+    <span style="margin-top: 30px;">COMMENT</span>
+    <div>
+        ADD COMMENT:
+        <input type="text" class="comment_content_{{ post.id }}">
+        <button onclick="submitComment({{ post.id }})">SUBMIT</button>
+    </div>
+    <div class="comment_{{ post.id }}" style="display: flex; flex-direction: column;">
+    {% for comment in comments %}
+        {% if comment.post.id == post.id %}
+        <div class="comment_{{ comment.id }}">
+            <span>{{ comment.content }}</span>
+            <span onclick="deleteComment({{ comment.id }})">x</span>
+        </div>
+        {% endif %}
+    {% endfor %}
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

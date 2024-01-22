@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header style="display: flex; justify-content: space-between;">
+        <div>PIROSTAGRAM</div>
+        <div>MAIN</div>
+        <div><a href="{% url 'post:create' %}">NEW CONTENT</a></div>
+    </header>
+    <main style="display: flex; justify-content: center; margin-top: 50px;">
+        <div style="display: flex; flex-direction: column; width: 50vh;">
+            {% block content %}
+            {% endblock %}
+        </div>
+        
+    </main>
+    <footer></footer>
+    <script>
+        const onClickLike = (id) => {
+            const requestLike = new XMLHttpRequest();
+            const url = "/like/";
+            requestLike.open("POST", url, true);
+            requestLike.setRequestHeader(
+                "Content-Type",
+                "application/json"
+            )
+
+            const data = JSON.stringify({id: id});
+            requestLike.send(data);
+
+            requestLike.onreadystatechange = () => {
+                if (requestLike.readyState === XMLHttpRequest.DONE) {
+                    if (requestLike.status < 400) {
+                        const {id, like} = JSON.parse(requestLike.response);
+                        const element = document.querySelector(`.post-id-${id} .post_like`);
+                        element.innerHTML = `LIKE: ${like}`
+                    }
+                }
+            }
+        }
+
+        const submitComment = (id) => {
+            const requestComment = new XMLHttpRequest();
+            let content = document.querySelector(`.comment_content_${id}`).value
+
+            document.querySelector(`.comment_content_${id}`).value = ''
+            const url = "/comment/";
+
+            requestComment.open("POST", url, true);
+            requestComment.setRequestHeader(
+                "Content-Type",
+                "application/json"
+            )
+
+            const data = JSON.stringify({id: id, comment: content});
+            requestComment.send(data)
+
+            requestComment.onreadystatechange = () => {
+                if (requestComment.readyState === XMLHttpRequest.DONE) {
+                    if (requestComment.status < 400) {
+                        const {id, comment, comment_id} = JSON.parse(requestComment.response);
+                        const element = document.querySelector(`.post-id-${id} .comment_${id}`)
+                        element.innerHTML += `<div class="comment_${ comment_id }"><span>${comment}</span><span onclick="deleteComment(${ comment_id })"> x<span></div>`
+                    }
+                }
+            }
+        }
+
+        const deleteComment = (id) => {
+            const commentDelete = new XMLHttpRequest();
+            const url = "/comment_delete/";
+
+            commentDelete.open("POST", url, true);
+            commentDelete.setRequestHeader(
+                "Content-Type",
+                "application/json"
+            )
+
+            const data = JSON.stringify({id: id});
+            commentDelete.send(data)
+
+            commentDelete.onreadystatechange = () => {
+                if (commentDelete.readyState === XMLHttpRequest.DONE) {
+                    if (commentDelete.status < 400) {
+                        const element = document.querySelector(`.comment_${id}`)
+                        element.parentNode.removeChild(element);
+                    }
+                }
+            }
+        }
+
+        const deletePost = (id) => {
+            postDelete = new XMLHttpRequest();
+            const url = "/post_delete/";
+
+            postDelete.open("POST", url, true);
+            postDelete.setRequestHeader(
+                "Content-Type",
+                "application/json"
+            )
+
+            const data = JSON.stringify({id: id});
+            postDelete.send(data);
+
+            postDelete.onreadystatechange = () => {
+                if (postDelete.readyState === XMLHttpRequest.DONE) {
+                    if (postDelete.status < 400) {
+                        const element = document.querySelector(`.post-id-${id}`)
+                        element.parentNode.removeChild(element);
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
